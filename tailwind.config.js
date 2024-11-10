@@ -16,7 +16,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'navy-blue': '#0A2239',
+                'teal-Blue':'#1F5D83',
+                'aqua-green':'#6AB8A5',
+                'light-sky-blue': '#A6E1FA',
+                'light-gray': '#E0E0E0',
+            }
         },
+      
     },
 
     plugins: [forms, typography],
