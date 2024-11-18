@@ -16,22 +16,17 @@
 		<header class="bg-white relative z-20 px-6">
 			<div class="container mx-auto flex justify-between items-center relative h-24">
 			<img src="{{ asset('images/syseyeidLogo.png') }}" class="h-12 w-auto rounded-full" />
-				<a href="#" class="w-64 h-full inline-block py-4 flex items-center font-black text-lg">
+				<a href="#" class="w-64 h-full inline-block py-4  items-center font-black text-lg">
 					   SYS EYE ID
 				</a>
 
 				<ul class="hidden md:flex flex-1 h-full justify-end items-center text-sm">
 					<li class="ml-6"><a href="{{ route('login') }}">Login</a></li>
-					<li class="ml-6"><a href="#">Cadastre-se</a></li>
+					<li class="ml-6"><a href="{{ route('register') }}">Cadastre-se</a></li>
 					
 				</ul>
 
-				<a href="#" class="md:hidden">
-					<img class="w-8 h-auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACCSURBVHhe7dmhDYBQAEPBv//SIGsaDGlA3CVPd4AeAAAAAAAAAOA/Lj0210aV5tqo0lwbVZpro0pzbVQJAAAAAAAAeKXdcEpzbVRpro0qzbVRpbk2qjTXRpUAAAAAAACAV9oNpzTXRpXm2qjSXBtVmmujSnNtVAkAAAAAAAAA+N45N+IVCzyqwPF8AAAAAElFTkSuQmCC">
-				</a>
-
-				
-
+			
 			</div>
 		</header>
 

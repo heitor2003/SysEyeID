@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,13 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',   // Adiciona user_type para diferenciar médico e clínica
+        'crm',         // Campo específico para médicos
+        'cnpj',        // Campo específico para clínicas
+        'address',     // Campo específico para clínicas
+        'phone',       // Campo de telefone
     ];
 
     /**
@@ -63,5 +61,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Scope a query to only include doctors.
+     */
+    public function scopeDoctors($query)
+    {
+        return $query->where('user_type', 'medico');
+    }
+
+    /**
+     * Scope a query to only include clinics.
+     */
+    public function scopeClinics($query)
+    {
+        return $query->where('user_type', 'clinica');
     }
 }

@@ -18,8 +18,20 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            
+            // Nova coluna para diferenciar entre médico e clínica
+            $table->enum('user_type', ['medico', 'clinica'])->default('medico');
+
+            // Campos específicos para cada tipo de usuário
+            $table->string('crm')->nullable(); // Campo CRM para médicos
+            $table->string('cnpj')->nullable(); // Campo CNPJ para clínicas
+            $table->string('address')->nullable(); // Campo endereço para clínicas
+            $table->string('phone')->nullable(); // Campo de telefone comum a todos os usuários
+
+            // Colunas opcionais do Jetstream
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+
             $table->timestamps();
         });
 
