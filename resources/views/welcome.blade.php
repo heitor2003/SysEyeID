@@ -11,16 +11,16 @@
 		<title>SYSEYEID</title>
 
 	</head>
-	<body class="bg-white font-sans">
+	<body class=" bg-gray-500 font-sans">
 
-		<header class="bg-white relative z-20 px-6">
+		<header class=" bg-gray-800 relative z-20 px-6">
 			<div class="container mx-auto flex justify-between items-center relative h-24">
 			<img src="{{ asset('images/syseyeidLogo.png') }}" class="h-12 w-auto rounded-full" />
 				<a href="#" class="w-64 h-full inline-block py-4  items-center font-black text-lg">
 					   SYS EYE ID
 				</a>
 
-				<ul class="hidden md:flex flex-1 h-full justify-end items-center text-sm">
+				<ul class="hidden md:flex flex-1 h-full justify-end items-center text-base text-white">
 					<li class="ml-6"><a href="{{ route('login') }}">Login</a></li>
 					<li class="ml-6"><a href="{{ route('register') }}">Cadastre-se</a></li>
 					
@@ -30,7 +30,7 @@
 			</div>
 		</header>
 
-		<div class="w-full bg-blue-600">
+		<div class="w-full bg-gray-500">
 
 			<div class="w-full h-full relative flex items-center justify-center py-24">
 

@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +15,10 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        // Validação baseada no tipo de usuário
+        // Exibe os dados recebidos para debug (remova em produção)
+        \Log::info('Dados recebidos:', $request->all());
+
+        // Validação
         $request->validate([
             'user_type' => ['required', Rule::in(['medico', 'clinica'])],
             'name' => 'required|string|max:255',
@@ -41,8 +42,8 @@ class RegisterController extends Controller
             'address' => $request->user_type === 'clinica' ? $request->address : null,
         ]);
 
-        auth()->login($user);
+        
 
-        return redirect()->route('dashboard');
+        return redirect()->route('login');
     }
 }
