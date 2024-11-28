@@ -31,9 +31,6 @@
                 class="mt-2 w-full p-3 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
         </div>
 
-        <!-- Tipo de Exame -->
-        
-
         <!-- Observações -->
         <div>
             <label for="observacoes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -47,7 +44,6 @@
         <!-- Campo para Enviar a Imagem do Olho -->
         <div>
             <div class="relative">
-                <!-- Botão personalizado para upload -->
                 <label for="imagem-olho" class="block text-center cursor-pointer py-2 px-4 bg-green-500 text-white rounded-lg ">
                     Clique para selecionar uma imagem
                 </label>
@@ -56,14 +52,81 @@
             </div>
         </div>
 
-        <!-- Botão de Submissão (Menor e com fonte ajustada) -->
-        <div class="flex justify-center">
-            <button type="submit" 
+        <input type="hidden" id="resultado-api" name="resultado_api">
+
+        <!-- Botão para Invocar API -->
+    <div class="mt-6 flex justify-center">
+            <button id='invoke-api-button'
                 class="px-6 py-2 bg-indigo-700 text-white font-semibold rounded-md  hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-500 focus:outline-none">
                 Realizar Exame
             </button>
-        </div>
-    </form>
+    </div>
+
+    <!-- Div para exibir a resposta da API -->
+    <div id="api-response" class="mt-4 text-gray-800 dark:text-gray-200 text-center"></div>
 </div>
+
+<div id="api-response" class="mt-4 text-gray-800 dark:text-gray-200 text-center"></div>
+
+<script>
+    document.getElementById('invoke-api-button').addEventListener('click', async function () {
+        const fileInput = document.getElementById('imagem-olho');
+        const arquivoImagem = fileInput.files[0]; // Obtém o arquivo de imagem enviado pelo usuário
+
+        if (!arquivoImagem) {
+            document.getElementById('api-response').innerText = 'Por favor, envie uma imagem antes de invocar a API.';
+            return;
+        }
+
+        try {
+            // Criar o corpo da requisição multipart/form-data
+            const formData = new FormData();
+            formData.append('file', arquivoImagem); // Adiciona a imagem ao FormData
+
+            // Fazendo a requisição à API Flask
+            const response = await fetch('http://localhost:5000/predict', { // Substitua pelo endpoint correto
+                method: 'POST',
+                body: formData, // Envia o FormData com a imagem
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Resposta da API:', data); // Debugging: Verifica o que a API retorna
+
+            // Verifica se há uma predicao na resposta da API
+            if (data && data.predicao) {
+                // Adiciona o valor de 'predicao' ao formulário oculto
+                const resultadoApi = JSON.stringify(data.predicao);
+                
+                // Enviar o resultado da API via fetch para a rota Laravel
+                await fetch('/processar-exame', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF Token
+                    },
+                    body: JSON.stringify({ resultado_api: resultadoApi })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Realiza algo com a resposta do Laravel (se necessário)
+                    console.log('Resposta do Laravel:', data);
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar para Laravel:', error);
+                });
+            } else {
+                console.error('A resposta da API não contém a chave "predicao".');
+                document.getElementById('api-response').innerText = 'Erro: Resposta inválida da API';
+            }
+        } catch (error) {
+            console.error('Erro ao invocar API:', error);
+            document.getElementById('api-response').innerText = 'Erro: ' + error.message;
+        }
+    });
+</script>
 
 </x-app-layout>
