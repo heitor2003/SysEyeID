@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\PDFController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,37 +18,52 @@ Route::get('/new-exam', function () {
 })->name('new-exam');
 
 Route::post('/processar-exame', function (Request $request) {
-    // Recebe os dados enviados pelo formulário
-    $dados = $request->all();
-
-    // Verifica se o resultado da API foi enviado
-    if (empty($dados['resultado_api'])) {
-        return response()->json(['error' => 'Nenhum resultado recebido da API'], 400);
-    }
-
-    // Armazena o resultado da API, nome do paciente e a data do exame na sessão
-    session([
-        'resultado_api' => $dados['resultado_api'],
-        'nome_paciente' => $dados['nome_paciente'],
-        'data_exame' => $dados['data_exame']
+    $request->validate([
+        'nome_paciente' => 'required|string',
+        'data_exame' => 'required|date',
+        'imagem_olho' => 'required|image',
+        'resultado_api' => 'required',
     ]);
 
-    // Redireciona para a página de exibição do resultado
-    return redirect('/resultado-exame');
+    try {
+        // Tenta salvar o arquivo
+        $caminhoArquivo = $request->file('imagem_olho')->store('public/uploads');
+
+        session([
+            'resultado_api' => $request->resultado_api,
+            'nome_paciente' => $request->nome_paciente,
+            'data_exame' => $request->data_exame,
+            'caminho_imagem' => $caminhoArquivo,
+        ]);
+
+        return redirect('/resultado-exame');
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'Erro ao salvar a imagem: ' . $e->getMessage()]);
+    }
 })->name('processar-exame');
 
 
+Route::get('/gerar-pdf', [PDFController::class, 'gerarPDF'])->name('gerar-pdf');
+
 Route::get('/resultado-exame', function () {
-    // Obtém o resultado da sessão
+    // Obtém os dados da sessão
     $resultadoApi = session('resultado_api');
+    $nome_paciente = session('nome_paciente');
+    $data_exame = session('data_exame');
+    $caminhoImagem = session('caminho_imagem'); // Caminho do arquivo na sessão
 
     if (!$resultadoApi) {
         return redirect('/new-exam')->withErrors(['error' => 'Nenhum resultado encontrado para exibir.']);
     }
 
-    // Decodifica o JSON armazenado na sessão e envia para a view
-    return view('resultado-exame', ['resultado' => json_decode($resultadoApi, true)]);
+    return view('resultado-exame', [
+        'resultado' => json_decode($resultadoApi, true),
+        'nome_paciente' => $nome_paciente,
+        'data_exame' => $data_exame,
+        'caminho_imagem' => $caminhoImagem, // Passa o caminho para a view
+    ]);
 });
+
 
 Route::middleware([
     'auth:sanctum',
