@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,12 +26,17 @@ Route::post('/processar-exame', function (Request $request) {
         return response()->json(['error' => 'Nenhum resultado recebido da API'], 400);
     }
 
-    // Armazena o resultado da API na sessão
-    session(['resultado_api' => $dados['resultado_api']]);
+    // Armazena o resultado da API, nome do paciente e a data do exame na sessão
+    session([
+        'resultado_api' => $dados['resultado_api'],
+        'nome_paciente' => $dados['nome_paciente'],
+        'data_exame' => $dados['data_exame']
+    ]);
 
     // Redireciona para a página de exibição do resultado
     return redirect('/resultado-exame');
 })->name('processar-exame');
+
 
 Route::get('/resultado-exame', function () {
     // Obtém o resultado da sessão
