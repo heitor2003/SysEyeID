@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,36 +16,32 @@ Route::get('/new-exam', function () {
     return view('new-exam');
 })->name('new-exam');
 
-
 Route::post('/processar-exame', function (Request $request) {
-    // Verifica se o resultado da API foi enviado
-    $resultadoApi = $request->input('resultado_api');
+    // Recebe os dados enviados pelo formulário
+    $dados = $request->all();
 
-    // Se não houver resultado, retorna erro
-    if (!$resultadoApi) {
+    // Verifica se o resultado da API foi enviado
+    if (empty($dados['resultado_api'])) {
         return response()->json(['error' => 'Nenhum resultado recebido da API'], 400);
     }
 
-    // Armazena o resultado na sessão
-    session(['resultado_api' => $resultadoApi]);
+    // Armazena o resultado da API na sessão
+    session(['resultado_api' => $dados['resultado_api']]);
 
-    // Log para depuração (opcional)
-    \Log::info('Resultado recebido da API:', ['resultado_api' => $resultadoApi]);
-
-    // Retorna a resposta para o frontend
-    return response()->json(['success' => true, 'message' => 'Resultado armazenado com sucesso']);
-});
+    // Redireciona para a página de exibição do resultado
+    return redirect('/resultado-exame');
+})->name('processar-exame');
 
 Route::get('/resultado-exame', function () {
     // Obtém o resultado da sessão
     $resultadoApi = session('resultado_api');
 
-    // Verifica se o resultado existe
     if (!$resultadoApi) {
-        return redirect('/new-exam')->with('error', 'Nenhum resultado de exame encontrado.');
+        return redirect('/new-exam')->withErrors(['error' => 'Nenhum resultado encontrado para exibir.']);
     }
 
-    return view('resultado-exame', ['resultado' => json_decode($resultadoApi)]);
+    // Decodifica o JSON armazenado na sessão e envia para a view
+    return view('resultado-exame', ['resultado' => json_decode($resultadoApi, true)]);
 });
 
 Route::middleware([
