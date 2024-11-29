@@ -3,8 +3,10 @@ from flask import Flask, request, jsonify
 import pickle
 import os
 from PIL import Image  # Para processar a imagem
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Carregando o modelo previamente treinado
 modelo = pickle.load(open('modelo_ia.pkl', 'rb'))
