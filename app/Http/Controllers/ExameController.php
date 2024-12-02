@@ -9,16 +9,27 @@ class ExameController extends Controller
 {
     public function consultarExames(Request $request)
 {
-    // Pega os arquivos da pasta 'public/pdfs' em storage
-    $pdfFiles = Storage::files('public/pdfs');
+    $directory = base_path('storage/app/public/pdfs');
+    
+    if (is_dir($directory)) {
+        $files = scandir($directory);
 
-    // Certifica-se que $pdfFiles não é null
-    if (empty($pdfFiles)) {
-        $pdfFiles = [];  // Garante que sempre seja um array
+        // Debug
+        dd($files); // Exibe todos os arquivos encontrados
+    } else {
+        dd('Diretório não encontrado: ' . $directory);
+    }// Ajuste no caminho
+
+    if (is_dir($directory)) {
+        $pdfFiles = array_filter(scandir($directory), function ($file) use ($directory) {
+            return is_file($directory . DIRECTORY_SEPARATOR . $file) && pathinfo($file, PATHINFO_EXTENSION) === 'pdf';
+        });
+    } else {
+        $pdfFiles = [];
     }
 
-    // Passa os arquivos para a view
     return view('check-exam', compact('pdfFiles'));
 }
 
 }
+

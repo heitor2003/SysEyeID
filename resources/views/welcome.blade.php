@@ -1,260 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SYSEYEID - Inteligência Artificial na Oftalmologia</title>
 
-		<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800 font-sans">
 
-		<title>SYSEYEID</title>
+    <!-- Header -->
+    <header class="text-white">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="#" class="flex items-center space-x-3">
+                <img src="{{ asset('images/syseyeidLogo.png') }}" alt="Logo" class="h-10 w-10 rounded-full">
+                <span class="font-bold text-lg">SYS EYE ID</span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="{{ route('login') }}" class="hover:text-gray-300">Login</a>
+                <a href="{{ route('register') }}" class="hover:text-gray-300">Cadastre-se</a>
+            </nav>
+            <button class="md:hidden text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
 
-	</head>
-	<body class=" bg-gray-500 font-sans">
+    <!-- Hero Section -->
+    <section class="relative bg-gray-700 h-80 md:h-96 flex items-center justify-center">
+        <img src="{{ asset('images/olho.jpg') }}" alt="Fundo" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        <div class="relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">SYS EYE ID</h1>
+            <p class="text-lg md:text-2xl text-gray-200 mt-4">Inteligência artificial na oftalmologia</p>
+        </div>
+    </section>
 
-		<header class=" bg-gray-800 relative z-20 px-6">
-			<div class="container mx-auto flex justify-between items-center relative h-24">
-			<img src="{{ asset('images/syseyeidLogo.png') }}" class="h-12 w-auto rounded-full" />
-				<a href="#" class="w-64 h-full inline-block py-4  items-center font-black text-lg">
-					   SYS EYE ID
-				</a>
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white">Como podemos ajudar você?</h2>
+            <p class="text-center text-gray-400 mt-4">Explore os benefícios da tecnologia em seus exames oftalmológicos.</p>
+            <div class="mt-10 grid gap-8 grid-cols-1 md:grid-cols-2">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=450" alt="Feature 1" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                    <h3 class="font-bold text-lg text-gray-800">Diagnósticos Precisos</h3>
+                    <p class="text-gray-600 mt-2">Utilize inteligência artificial para obter diagnósticos confiáveis e rápidos.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1527576539890-dfa815648363?w=450" alt="Feature 2" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                    <h3 class="font-bold text-lg text-gray-800">Facilidade no Uso</h3>
+                    <p class="text-gray-600 mt-2">Uma interface simples e intuitiva para médicos e pacientes.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-				<ul class="hidden md:flex flex-1 h-full justify-end items-center text-base text-white">
-					<li class="ml-6"><a href="{{ route('login') }}">Login</a></li>
-					<li class="ml-6"><a href="{{ route('register') }}">Cadastre-se</a></li>
-					
-				</ul>
+    <!-- Call to Action -->
+    <section class="py-16 text-white text-center">
+        <h2 class="text-3xl font-bold">Pronto para transformar a forma como você realiza diagnósticos?</h2>
+        <p class="text-lg mt-4">Junte-se aos profissionais que já estão inovando com a SYS EYE ID.</p>
+        <a href="{{ route('register') }}" class="mt-6 inline-block bg-blue-600 py-3 px-6 rounded-full hover:bg-blue-500">Cadastre-se Agora</a>
+    </section>
 
-			
-			</div>
-		</header>
-
-		<div class="w-full bg-gray-500">
-
-			<div class="w-full h-full relative flex items-center justify-center py-24">
-
-				<img src="{{ asset('images/olho.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover opacity-30" />
-
-				<div class="px-6 max-w-4xl relative z-10 text-center">
-					<h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-2">SYS EYE ID</h1>
-					<h2 class="text-lg md:text-2xl font-condensed text-white leading-tight mb-8">Inteligência artificial na oftalmologia</h2>
-					<a href="#" class="inline-block bg-white font-condensed text-primary py-2 px-5 text-base rounded-full hover:shadow-lg hover:bg-blue-600 hover:text-white">Saiba Mais</a>
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="bg-gray-100 py-24 px-12">
-			<div class="container mx-auto">
-
-				<div class="flex flex-wrap">
-
-					<div class="mb-12 lg:mb-0 w-full lg:flex-1">
-						<h2 class="mb-4 font-black leading-tight text-xl md:text-3xl text-gray-900">Ut enim ad minim veniam, quis nostrud.</h2>
-						<h3 class="mb-6 text-sm md:text-lg text-gray-700 max-w-xl">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</h3>
-
-						<ul class="py-6 mb-6">
-							<li class="flex items-center mb-6">
-								<img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=450" class="w-24 h-24 object-cover" />
-								<div class="pl-5">
-									<h4 class="font-black text-base md:text-lg text-gray-900 leading-tight mb-2">At tellus at urna condimentum.</h4>
-									<p class="text-xs md:text-sm text-gray-700 leading-snug max-w-sm">Etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Gravida rutrum quisque non tellus orci ac auctor augue.</p>
-								</div>
-							</li>
-							<li class="flex items-center mb-6">
-								<img src="https://images.unsplash.com/photo-1527576539890-dfa815648363?w=450" class="w-24 h-24 object-cover" />
-								<div class="pl-5">
-									<h4 class="font-black text-base md:text-lg text-gray-900 leading-tight mb-2">At tellus at urna condimentum.</h4>
-									<p class="text-xs md:text-sm text-gray-700 leading-snug max-w-sm">Etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Gravida rutrum quisque non tellus orci ac auctor augue.</p>
-								</div>
-							</li>
-							<li class="flex items-center">
-								<img src="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=450" class="w-24 h-24 object-cover" />
-								<div class="pl-5">
-									<h4 class="font-black text-base md:text-lg text-gray-900 leading-tight mb-2">At tellus at urna condimentum.</h4>
-									<p class="text-xs md:text-sm text-gray-700 leading-snug max-w-sm">Etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Gravida rutrum quisque non tellus orci ac auctor augue.</p>
-								</div>
-							</li>
-						</ul>
-
-						<a href="#" class="inline-block bg-blue-600 text-white py-2 px-5 text-base rounded-full hover:shadow-lg">View all products</a>
-					</div>
-
-					<div class="w-full lg:w-5/12 px-12">
-
-						<div class="bg-white p-4 rounded-lg shadow-lg">
-							<img src="https://images.unsplash.com/photo-1439337153520-7082a56a81f4?w=800" class="w-full h-auto rounded" />
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-
-		<div class="bg-white p-12 py-24">
-				
-			<div class="max-w-2xl mx-auto text-center mb-12">
-				<h2 class="font-black leading-tight text-xl md:text-3xl mb-4">Ligula ullamcorper malesuada proin</h2>
-				<p class="text-sm md:text-base font-condensed max-w-lg mx-auto">Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Massa eget egestas purus viverra accumsan in.</p>
-			</div>
-
-			<div class="container mx-auto">
-				
-				<div class="flex flex-wrap justify-center items-center">
-					
-					<div class="mb-12 lg:mb-0 w-full lg:w-3/12 text-right">
-						<div class="bg-white p-4 rounded-lg shadow-lg w-full">
-							<img src="https://images.unsplash.com/photo-1493286825465-8b922d030e9c?w=800" class="w-full h-auto object-cover rounded" />
-						</div>
-					</div>
-					
-					<div class="w-full lg:flex-1 max-w-2xl text-sm lg:pl-12 text-gray-800">
-						<h3 class="text-xl mb-3">Blandit volutpat maecenas volutpat blandit aliquam etiam</h3>
-						<p class="mb-3">Ac auctor augue mauris augue neque gravida in fermentum et. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Erat velit scelerisque in dictum non. Ut enim blandit volutpat maecenas volutpat. Blandit massa enim nec dui nunc mattis enim. Cursus risus at ultrices mi tempus imperdiet.</p>
-						<p class="mb-3">Iaculis eu non diam phasellus vestibulum lorem sed risus. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Nibh ipsum consequat nisl vel pretium lectus quam id. Convallis aenean et tortor at risus viverra. Sed odio morbi quis commodo odio aenean sed. Lobortis scelerisque fermentum dui faucibus in. Leo urna molestie at elementum eu facilisis. Eu volutpat odio facilisis mauris sit amet massa vitae.</p>
-						<p>Tristique senectus et netus et malesuada fames ac turpis egestas. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Pharetra massa massa ultricies mi quis.</p>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="bg-blue-600 text-white p-12">
-				
-			<div class="container mx-auto">
-				
-				<div class="flex flex-wrap justify-between items-center">
-					<div class="text-center lg:text-left w-full mb-6 lg:mb-0 lg:w-auto">
-						<strong class="font-black text-lg md:text-3xl">Excepteur sint occaecat cupidatat non</strong>
-					</div>
-					<div class="text-center lg:text-right w-full md:w-auto">
-						<a href="#" class="inline-block bg-white text-blue-600 py-2 px-5 text-base rounded-full hover:shadow-lg">Get in touch!</a>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-		
-
-
-		<div class="bg-white py-24 px-12">
-			
-			<div class="max-w-xl mx-auto text-center">
-				<h2 class="mb-2 font-black text-xl lg:text-3xl text-gray-900">Ut enim ad minim veniam.</h2>
-				<h3 class="mb-6 text-base lg:text-lg text-gray-700 max-w-xl">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</h3>
-			</div>
-
-			<div class="conatiner mx-auto">
-				
-				<div class="flex flex-wrap">
-					
-					<div class="w-full lg:w-1/3 p-4">
-						<a href="#" class="block w-full h-full relative rounded-lg overflow-hidden shadow-lg">
-							<img src="https://images.unsplash.com/photo-1495431088732-09e59535d241?w=800" />
-
-							<div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-								<div class="p-6 py-8 text-center max-w-xs relative">
-
-									<div class="absolute left-0 top-0 w-full h-full bg-black opacity-50"></div>
-
-									<div class="relative z-10">
-										<h4 class="mb-2 font-display text-lg text-white">Ut enim ad minim veniam.</h4>
-										<h5 class="mb-4 font-condensed text-xs text-white px-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</h5>
-										<span class="inline-block bg-white font-condensed text-primary py-2 px-5 text-xs rounded-full">Find out more</span>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					
-					<div class="w-full lg:w-1/3 p-4">
-						<a href="#" class="block w-full h-full relative rounded-lg overflow-hidden shadow-lg">
-							<img src="https://images.unsplash.com/photo-1495431088732-09e59535d241?w=800" />
-
-							<div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-								<div class="p-6 py-8 text-center max-w-xs relative">
-
-									<div class="absolute left-0 top-0 w-full h-full bg-black opacity-50"></div>
-
-									<div class="relative z-10">
-										<h4 class="mb-2 font-display text-lg text-white">Ut enim ad minim veniam.</h4>
-										<h5 class="mb-4 font-condensed text-xs text-white px-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</h5>
-										<span class="inline-block bg-white font-condensed text-primary py-2 px-5 text-xs rounded-full">Find out more</span>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					
-					<div class="w-full lg:w-1/3 p-4">
-						<a href="#" class="block w-full h-full relative rounded-lg overflow-hidden shadow-lg">
-							<img src="https://images.unsplash.com/photo-1495431088732-09e59535d241?w=800" />
-
-							<div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-								<div class="p-6 py-8 text-center max-w-xs relative">
-
-									<div class="absolute left-0 top-0 w-full h-full bg-black opacity-50"></div>
-
-									<div class="relative z-10">
-										<h4 class="mb-2 font-display text-lg text-white">Ut enim ad minim veniam.</h4>
-										<h5 class="mb-4 font-condensed text-xs text-white px-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</h5>
-										<span class="inline-block bg-white font-condensed text-primary py-2 px-5 text-xs rounded-full">Find out more</span>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="bg-gray-200 px-6 py-12">
-
-			<footer class="container mx-auto">
-
-				<div class="flex flex-col md:flex-row">
-					<div class="md:w-1/4 flex flex-col mb-12 md:mb-0">
-						<h4 class="font-condensed pb-4">Legal</h4>
-						<a href="#" class="text-sm text-gray-800 py-1">Privacy Policy</a>
-						<a href="#" class="text-sm text-gray-800 py-1">Terms & Conditions</a>
-					</div>
-					<div class="md:w-1/4 flex flex-col mb-12 md:mb-0">
-						<h4 class="font-condensed pb-4">About</h4>
-						<a href="#" class="text-sm text-gray-800 py-1">Company Information</a>
-						<a href="#" class="text-sm text-gray-800 py-1">History</a>
-					</div>
-					<div class="md:w-1/4 flex flex-col mb-12 md:mb-0">
-						<h4 class="font-condensed pb-4">Services</h4>
-						<a href="#" class="text-sm text-gray-800 py-1">Buildings</a>
-						<a href="#" class="text-sm text-gray-800 py-1">Construction</a>
-					</div>
-					<div class="md:w-1/4 flex flex-col mb-12 md:mb-0">
-						<h4 class="font-condensed pb-4">Find us</h4>
-						<a href="#" target="_blank" class="text-sm text-gray-800 py-1">Office Location</a>
-						<a href="#" target="_blank" class="text-sm text-gray-800 py-1">Contact Us</a>
-					</div>
-				</div>
-
-				<div class="flex justify-between items-end pt-12">
-					<div class="w-full md:w-1/2">
-						<div>
-							<p class="text-sm text-gray-700">Copyright © 2019 Company Name.</p>
-							<p class="text-xs text-gray-700 mt-2">Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.</p>
-						</div>
-					</div>
-				</div>
-
-			</footer>
-		</div>
-
-	</body>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 SYS EYE ID. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
 </html>
