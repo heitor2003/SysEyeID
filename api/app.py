@@ -28,18 +28,16 @@ def predict():
         imagem = Image.open(arquivo)
 
         tamanho_esperado = (224, 224)
-         
         imagem = imagem.resize(tamanho_esperado)
 
         imagem_array = np.array(imagem) / 255.0
-
         imagem_array = np.expand_dims(imagem_array, axis=0)
 
         # Faz a previsão com o modelo
         predicao = modelo.predict(imagem_array)
         resultado = predicao.tolist()
 
-        # Retorna a resposta
+        # Retorna a resposta como JSON
         resposta = {'predicao': resultado}
         return jsonify(resposta)
 

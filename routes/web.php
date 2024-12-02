@@ -17,6 +17,13 @@ Route::get('/new-exam', function () {
     return view('new-exam');
 })->name('new-exam');
 
+Route::get('/visualizar-pdf/{filename}', [PDFController::class, 'visualizarPDF'])->name('visualizar-pdf');
+
+Route::get('/check-exam', function () {
+    return view('check-exam');
+})->name('check-exam');
+
+
 Route::post('/processar-exame', function (Request $request) {
     $request->validate([
         'nome_paciente' => 'required|string',
@@ -43,7 +50,14 @@ Route::post('/processar-exame', function (Request $request) {
 })->name('processar-exame');
 
 
-Route::get('/gerar-pdf', [PDFController::class, 'gerarPDF'])->name('gerar-pdf');
+
+
+Route::post('/processar-exame', [PDFController::class, 'processarExame'])->name('processar-exame');
+
+Route::get('/gerar-pdf', [PDFController::class, 'gerarPdf'])->name('gerar-pdf');
+
+Route::post('/salvar-pdf', [PDFController::class, 'salvarPdf']);
+
 
 Route::get('/resultado-exame', function () {
     // Obtém os dados da sessão
