@@ -47,12 +47,12 @@
             <p class="text-center text-gray-400 mt-4">Explore os benefícios da tecnologia em seus exames oftalmológicos.</p>
             <div class="mt-10 grid gap-8 grid-cols-1 md:grid-cols-2">
                 <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=450" alt="Feature 1" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                <img src="{{ asset('images/medico.jpg') }}" alt="Feature 1" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
                     <h3 class="font-bold text-lg text-gray-800">Diagnósticos Precisos</h3>
                     <p class="text-gray-600 mt-2">Utilize inteligência artificial para obter diagnósticos confiáveis e rápidos.</p>
                 </div>
                 <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-                    <img src="https://images.unsplash.com/photo-1527576539890-dfa815648363?w=450" alt="Feature 2" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                <img src="{{ asset('images/tec.png') }}" alt="Feature 2" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
                     <h3 class="font-bold text-lg text-gray-800">Facilidade no Uso</h3>
                     <p class="text-gray-600 mt-2">Uma interface simples e intuitiva para médicos e pacientes.</p>
                 </div>

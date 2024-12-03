@@ -63,24 +63,44 @@ document.getElementById("gerar-pdf").addEventListener("click", function () {
     const resultado = @json($resultado);
     const urlImagem = "{{ $url_imagem }}";
 
-    // Adicionando informações ao PDF
-    doc.text("Resultado do Exame", 10, 10);
-    doc.text(`Nome do Paciente: ${nomePaciente}`, 10, 20);
-    doc.text(`Data do Exame: ${dataExame}`, 10, 30);
+    // Configuração de estilos
+    doc.setFont("Helvetica", "normal");
+    doc.setFontSize(12);
 
-    // Adicionando a imagem ao PDF
-    doc.addImage(urlImagem, 'JPEG', 10, 40, 100, 90);
+    // Cabeçalho
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("Resultado do Exame Ocular", doc.internal.pageSize.width / 2, 20, { align: "center" });
+    doc.setFontSize(12);
+    doc.setFont("Helvetica", "normal");
+    doc.line(10, 25, doc.internal.pageSize.width - 10, 25); // Linha divisória
+
+    // Informações do Paciente
+    doc.text("Informações do Paciente", 10, 35);
+    doc.text(`Nome do Paciente: ${nomePaciente}`, 10, 45);
+    doc.text(`Data do Exame: ${dataExame}`, 10, 55);
+
+    // Imagem do exame
+    doc.text("Imagem do Exame", 10, 70);
+    doc.addImage(urlImagem, 'JPEG', 10, 80, 100, 75); // Ajustar tamanho proporcional à imagem
 
     // Resultados do exame
+    doc.text("Resultados do Exame", 10, 165);
+    doc.setFont("Helvetica", "normal");
+
     let resultadoText = '';
     if (resultado[0][0] > resultado[0][1]) {
-        resultadoText = `Possibilidade de estar saudável: ${(resultado[0][0] * 100).toFixed(2)}%\n`;
-        resultadoText += `Possibilidade de estar doente: ${(resultado[0][1] * 100).toFixed(2)}%`;
+        resultadoText = `Possibilidade de estar saudável: ${(resultado[0][0] * 100).toFixed(2)}%\nPossibilidade de estar doente: ${(resultado[0][1] * 100).toFixed(2)}%`;
     } else {
-        resultadoText = `Possibilidade de estar doente: ${(resultado[0][1] * 100).toFixed(2)}%\n`;
-        resultadoText += `Possibilidade de estar saudável: ${(resultado[0][0] * 100).toFixed(2)}%`;
+        resultadoText = `Possibilidade de estar doente: ${(resultado[0][1] * 100).toFixed(2)}%\nPossibilidade de estar saudável: ${(resultado[0][0] * 100).toFixed(2)}%`;
     }
-    doc.text(resultadoText, 10, 220);
+    doc.text(resultadoText, 10, 175);
+
+    // Rodapé
+    const pageHeight = doc.internal.pageSize.height;
+    doc.setFont("Helvetica", "italic");
+    doc.setFontSize(10);
+    doc.text("Exame gerado automaticamente pelo sistema.", 10, pageHeight - 10);
 
     // Convertendo o PDF para Blob
     const pdfBlob = doc.output('blob');
@@ -114,6 +134,7 @@ document.getElementById("gerar-pdf").addEventListener("click", function () {
             alert("Erro ao enviar o PDF para o servidor.");
         });
 });
+
 </script>
 
 </x-app-layout>
