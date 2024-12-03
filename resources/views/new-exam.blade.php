@@ -1,30 +1,32 @@
 <x-app-layout>
     <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-        <h1 class="text-2xl font-medium text-gray-900 dark:text-white">Realizar Novo Exame</h1>
-        <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white text-center">Realizar Novo Exame</h1>
+        <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 leading-relaxed text-center">
             Siga as etapas abaixo para realizar um novo exame ocular. Certifique-se de preencher todas as informações corretamente para obter resultados precisos.
         </p>
     </div>
 
-    <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 p-6 lg:p-8">
-        <form id="exame-form" action="{{ route('processar-exame') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+    <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 py-8 px-6 lg:px-20">
+        <form id="exame-form" action="{{ route('processar-exame') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
             @csrf
-            <!-- Informações do Paciente -->
-            <div>
-                <label for="nome-paciente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Nome do Paciente
-                </label>
-                <input type="text" id="nome-paciente" name="nome_paciente" required
-                    class="mt-2 w-full p-3 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Informações do Paciente -->
+                <div>
+                    <label for="nome-paciente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Nome do Paciente
+                    </label>
+                    <input type="text" id="nome-paciente" name="nome_paciente" required
+                        class="mt-2 w-full p-3 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
 
-            <!-- Data do Exame -->
-            <div>
-                <label for="data-exame" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Data do Exame
-                </label>
-                <input type="date" id="data-exame" name="data_exame" required
-                    class="mt-2 w-full p-3 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <!-- Data do Exame -->
+                <div>
+                    <label for="data-exame" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Data do Exame
+                    </label>
+                    <input type="date" id="data-exame" name="data_exame" required
+                        class="mt-2 w-full p-3 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
             </div>
 
             <!-- Observações -->
@@ -51,13 +53,13 @@
             <!-- Botão para Invocar API -->
             <div class="mt-6 flex justify-center">
                 <button type="button" id="invoke-api-button"
-                    class="px-6 py-2 bg-indigo-700 text-white font-semibold rounded-md hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-500 focus:outline-none">
+                    class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-500 focus:outline-none shadow-lg">
                     Realizar Exame
                 </button>
             </div>
 
             <!-- Div para exibir a resposta da API -->
-            <div id="api-response" class="mt-4 text-gray-800 dark:text-gray-200 text-center"></div>
+            <div id="api-response" class="mt-4 text-lg text-gray-800 dark:text-gray-200 text-center font-semibold"></div>
         </form>
     </div>
 
