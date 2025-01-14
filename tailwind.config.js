@@ -11,6 +11,8 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    darkMode: false,
+
     theme: {
         extend: {
             fontFamily: {
@@ -18,13 +20,15 @@ export default {
             },
             colors: {
                 'navy-blue': '#0A2239',
-                'teal-Blue':'#1F5D83',
-                'aqua-green':'#6AB8A5',
+                'teal-Blue': '#1F5D83',
+                'aqua-green': '#6AB8A5',
                 'light-sky-blue': '#A6E1FA',
                 'light-gray': '#E0E0E0',
+
+                'light-background': '#3a86ff',
+                'light-text': '#061722'
             }
         },
-      
     },
 
     plugins: [forms, typography],
