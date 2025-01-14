@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>SYSEYEID</title>
+        <title>Sys Eye ID</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,17 +16,18 @@
 
         <!-- Styles -->
         @livewireStyles
+        <link rel="stylesheet" href="{{ mix('resources\css\app.css') }}">
     </head>
-    <body class="font-sans antialiased">
+    <body class="bg-light-background text-light-text">
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="bg-light-background text-light-text">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="bg-light-background text-light-text">
+                    <div class="bg-light-background text-light-text">
                         {{ $header }}
                     </div>
                 </header>
