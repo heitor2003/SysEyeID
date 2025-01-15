@@ -69,7 +69,7 @@
             const arquivoImagem = fileInput.files[0]; // Obtém o arquivo de imagem enviado pelo usuário
 
             if (!arquivoImagem) {
-                document.getElementById('api-response').innerText = 'Por favor, envie uma imagem antes de invocar a API.';
+                document.getElementById('api-response').innerText = 'Por favor, envie uma imagem.';
                 return;
             }
 

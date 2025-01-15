@@ -23,7 +23,6 @@ Route::get('/check-exam', function () {
     return view('check-exam');
 })->name('check-exam');
 
-
 Route::post('/processar-exame', function (Request $request) {
     $request->validate([
         'nome_paciente' => 'required|string',
@@ -33,7 +32,6 @@ Route::post('/processar-exame', function (Request $request) {
     ]);
 
     try {
-        // Tenta salvar o arquivo
         $caminhoArquivo = $request->file('imagem_olho')->store('public/uploads');
 
         session([
@@ -43,21 +41,17 @@ Route::post('/processar-exame', function (Request $request) {
             'caminho_imagem' => $caminhoArquivo,
         ]);
 
-        return redirect('/resultado-exame');
+        return redirect()->route('carregando');
     } catch (\Exception $e) {
         return back()->withErrors(['error' => 'Erro ao salvar a imagem: ' . $e->getMessage()]);
     }
 })->name('processar-exame');
-
-
-
 
 Route::post('/processar-exame', [PDFController::class, 'processarExame'])->name('processar-exame');
 
 Route::get('/gerar-pdf', [PDFController::class, 'gerarPdf'])->name('gerar-pdf');
 
 Route::post('/salvar-pdf', [PDFController::class, 'salvarPdf']);
-
 
 Route::get('/resultado-exame', function () {
     // Obtém os dados da sessão
@@ -77,7 +71,6 @@ Route::get('/resultado-exame', function () {
         'caminho_imagem' => $caminhoImagem, // Passa o caminho para a view
     ]);
 });
-
 
 Route::middleware([
     'auth:sanctum',
