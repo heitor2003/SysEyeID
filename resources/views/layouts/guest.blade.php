@@ -18,7 +18,7 @@
         @livewireStyles
     </head>
     <body>
-        <div class="bg-light-background text-light-text">
+        <div class="water-blue-background light-text">
             {{ $slot }}
         </div>
 
