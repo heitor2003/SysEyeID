@@ -12,7 +12,7 @@
             </div>
         @endsession
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" class="water-blue-background light-text" action="{{ route('login') }}">
             @csrf
 
             <div>
@@ -46,3 +46,9 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+
+<style>
+    .light-background { background-color: #c7d1d4; }
+    .water-blue-background { background-color: #79b6c8; }
+    .light-text { color: #061722; }
+</style>

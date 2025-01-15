@@ -34,9 +34,8 @@
     </div>
 
     <!-- Realizar Novo Exame -->
-    <div class="water-blue-backrground">
+    <div class="water-blue-background">
         <div class="flex items-center">
-            
             <h2 class="ms-3 text-xl font-semibold light-text">
                 Realizar Novo Exame
             </h2>
@@ -57,3 +56,9 @@
         </p>
     </div>
 </div>
+
+<style>
+    .light-background { background-color: #c7d1d4; }
+    .water-blue-background { background-color: #79b6c8; }
+    .light-text { color: #061722; }
+</style>
