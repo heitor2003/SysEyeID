@@ -1,29 +1,29 @@
-<div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+<div class="p-6 lg:p-8 water-blue-background border-b border-gray-200 dark:border-gray-700">
     
-    <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
+    <h1 class="mt-8 text-2xl font-medium light-text">
         Bem-vindo ao SYSEYE ID!
     </h1>
 
-    <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+    <p class="mt-6 light-text leading-relaxed">
         O SYSEYE ID é sua solução completa para gerenciar exames oculares. Consulte exames já realizados ou inicie um novo para obter resultados precisos e rápidos.
     </p>
 </div>
 
-<div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
+<div class="water-blue-background bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
     <!-- Consultar Exame -->
     <div>
         <div class="flex items-center">
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
+            <h2 class="ms-3 text-xl font-semibold light-text">
                 Consultar Exame
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="mt-4 light-text text-sm leading-relaxed">
             Acesse rapidamente os resultados de exames anteriores. Filtre por data, paciente ou status do exame.
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="/check-exam" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="/check-exam" class="inline-flex items-center font-semibold light-text">
                 Consultar Exame
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
@@ -34,20 +34,20 @@
     </div>
 
     <!-- Realizar Novo Exame -->
-    <div>
+    <div class="water-blue-backrground">
         <div class="flex items-center">
             
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
+            <h2 class="ms-3 text-xl font-semibold light-text">
                 Realizar Novo Exame
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="mt-4 light-text text-sm leading-relaxed">
             Inicie um novo exame ocular para seu paciente. O sistema guiará você por todas as etapas, garantindo precisão nos resultados.
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{ route('new-exam') }}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{ route('new-exam') }}" class="inline-flex items-center font-semibold light-text">
                 Iniciar Novo Exame
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">

@@ -18,16 +18,16 @@
         @livewireStyles
         <link rel="stylesheet" href="{{ mix('resources\css\app.css') }}">
     </head>
-    <body class="bg-light-background text-light-text">
+    <body class="light-background light-text">
         <x-banner />
 
-        <div class="bg-light-background text-light-text">
+        <div class="light-background light-text">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-light-background text-light-text">
-                    <div class="bg-light-background text-light-text">
+                <header class="light-background light-text">
+                    <div>
                         {{ $header }}
                     </div>
                 </header>
