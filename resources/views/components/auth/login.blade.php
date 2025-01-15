@@ -1,13 +1,13 @@
-<x-guest-layout>
+<x-guest-layout class="water-blue-background light-text">
     <x-authentication-card>
         <x-slot name="logo">
             <img src="{{ asset('images/logov2.jpg') }}" class="h-20 w-auto rounded-full" />
         </x-slot>
 
-        <x-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4 water-blue-background light-text" />
 
         @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+            <div class="mb-4 font-medium text-sm text-green-600">
                 {{ $value }}
             </div>
         @endsession

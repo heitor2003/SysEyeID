@@ -1,18 +1,18 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
+<x-guest-layout class="light-background light-text">
+    <x-authentication-card  class="light-background light-text">
+        <x-slot name="logo" class="light-background light-text">
             <img src="{{ asset('images/logov2.jpg') }}" class="h-20 w-auto rounded-full" />
         </x-slot>
 
-        <x-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4 light-background light-text" />
 
         @session('status')
-           <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+           <div class="light-background light-text w-full sm:max-w-md mt-6 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $value }}
             </div>
         @endsession
 
-        <form method="POST" class="water-blue-background light-text" action="{{ route('login') }}">
+        <form method="POST" class="light-background light-text" action="{{ route('login') }}">
             @csrf
 
             <div>
@@ -44,11 +44,11 @@
                 </x-button>
             </div>
         </form>
-    </x-authentication-card>
-</x-guest-layout>
 
-<style>
-    .light-background { background-color: #c7d1d4; }
-    .water-blue-background { background-color: #79b6c8; }
-    .light-text { color: #061722; }
-</style>
+    </x-authentication-card>
+    <style>
+        .light-background { background-color: #c7d1d4; }
+        .water-blue-background { background-color: #79b6c8; }
+        .light-text { color: #061722; }
+    </style>
+</x-guest-layout>
