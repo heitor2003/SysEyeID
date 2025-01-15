@@ -7,7 +7,7 @@
         </p>
     </div>
 
-    <div class="bg-light-yellow dark:bg-dark-blue bg-opacity-25 p-6 lg:p-8">
+    <div class="water-blue-background bg-opacity-25 p-6 lg:p-8">
         <!-- Informações do Paciente -->
         <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow text-center">Informações do Paciente</h2>
         <div class="mt-4 text-center">
@@ -21,7 +21,7 @@
         
         <!-- Imagem do exame -->
         <div class="mt-6 text-center">
-            <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow">Imagem do Exame</h2>
+            <h2 class="text-lg font-medium light-text">Imagem do Exame</h2>
             <div class="mt-4">
                 <img src="{{ $url_imagem }}" alt="Imagem do Olho" class="w-1/2 max-w-md mx-auto border rounded-lg">
             </div>
@@ -29,7 +29,7 @@
 
         <!-- Resultados -->
         <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow mt-6 text-center">Resultado do Exame</h2>
-        <div class="mt-4 bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-300 dark:border-gray-700 text-center">
+        <div class="mt-4 light-background p-6 rounded-lg border border-gray-300 dark:border-gray-700 text-center">
             <p class="text-dark-blue dark:text-light-yellow">
                 @if ($resultado[0][0] > $resultado[0][1])
                     <strong>Possibilidade de estar saudável:</strong> {{ number_format($resultado[0][0] * 100, 2) }}%<br>

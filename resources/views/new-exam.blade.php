@@ -2,7 +2,7 @@
     <div class="p-6 lg:p-8 bg-light-yellow dark:bg-water-blue-background border-b border-light-green dark:border-dark-blue">
         <h1 class="text-3xl font-bold text-dark-blue dark:text-light-yellow text-center">Realizar Novo Exame</h1>
         <p class="mt-4 text-lg text-dark-green dark:text-light-green leading-relaxed text-center">
-            Siga as etapas abaixo para realizar um novo exame ocular. Certifique-se de preencher todas as informações corretamente para obter resultados precisos.
+            Siga as etapas abaixo para clasificar um novo exame ocular. Certifique-se de preencher todas as informações corretamente para obter resultados precisos.
         </p>
     </div>
 
@@ -54,7 +54,7 @@
             <div class="mt-6 flex justify-center">
                 <button type="button" id="invoke-api-button"
                     class="px-6 py-3 light-background text-light-yellow dark:text-dark-blue font-semibold rounded-lg hover:bg-dark-green dark:hover:bg-water-blue-background focus:ring-4 focus:ring-light-green focus:outline-none shadow-lg">
-                    Realizar Exame
+                    Clasificar Exame
                 </button>
             </div>
 
