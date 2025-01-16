@@ -19,11 +19,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'navy-blue': '#0A2239',
-                'teal-Blue': '#1F5D83',
-                'aqua-green': '#6AB8A5',
-                'light-gray': '#E0E0E0',
-
                 'light-background': '#79b6c8',
                 'water-blue-background': '#c7d1d4',
                 'light-text': '#061722'
