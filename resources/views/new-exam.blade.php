@@ -2,7 +2,7 @@
     <div class="p-6 lg:p-8 bg-light-yellow dark:bg-water-blue-background border-b border-light-green dark:border-dark-blue">
         <h1 class="text-3xl font-bold text-dark-blue dark:text-light-yellow text-center">Realizar Novo Exame</h1>
         <p class="mt-4 text-lg text-dark-green dark:text-light-green leading-relaxed text-center">
-            Siga as etapas abaixo para clasificar um novo exame ocular. Certifique-se de preencher todas as informações corretamente para obter resultados precisos.
+            Siga as etapas abaixo para classificar um novo exame ocular. Certifique-se de preencher todas as informações corretamente para obter resultados precisos.
         </p>
     </div>
 
@@ -15,14 +15,14 @@
                         Nome do Paciente
                     </label>
                     <input type="text" id="nome-paciente" name="nome_paciente" required
-                        class="mt-2 w-full p-3 bg-light-yellow dark:bg-dark-blue text-dark-blue dark:text-light-yellow border border-light-green dark:border-dark-green rounded-lg focus:ring-light-green focus:border-light-green">
+                        class="form-input">
                 </div>
                 <div>
                     <label for="data-exame" class="block text-sm font-medium text-dark-blue dark:text-light-yellow">
                         Data do Exame
                     </label>
                     <input type="date" id="data-exame" name="data_exame" required
-                        class="mt-2 w-full p-3 bg-light-yellow dark:bg-dark-blue text-dark-blue dark:text-light-yellow border border-light-green dark:border-dark-green rounded-lg focus:ring-light-green focus:border-light-green">
+                        class="form-input">
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                     Observações
                 </label>
                 <textarea id="observacoes" name="observacoes" rows="4"
-                    class="mt-2 w-full p-3 bg-light-yellow dark:bg-dark-blue text-dark-blue dark:text-light-yellow border border-light-green dark:border-dark-green rounded-lg focus:ring-light-green focus:border-light-green"
+                    class="form-textarea"
                     placeholder="Insira quaisquer observações relevantes (opcional)"></textarea>
             </div>
 
@@ -40,15 +40,15 @@
                     Imagem do Olho
                 </label>
                 <input type="file" id="imagem-olho" name="imagem_olho" accept="image/*" required
-                    class="mt-2 w-full p-3 bg-light-yellow dark:bg-dark-blue text-dark-blue dark:text-light-yellow border border-light-green dark:border-dark-green rounded-lg focus:ring-light-green focus:border-light-green">
+                    class="form-input">
             </div>
 
             <input type="hidden" id="resultado-api" name="resultado_api">
 
             <div class="mt-6 flex justify-center">
                 <button type="button" id="invoke-api-button"
-                    class="px-6 py-3 light-background text-light-yellow dark:text-dark-blue font-semibold rounded-lg hover:bg-dark-green dark:hover:bg-water-blue-background focus:ring-4 focus:ring-light-green focus:outline-none shadow-lg">
-                    Clasificar Exame
+                    class="btn-primary">
+                    Classificar Exame
                 </button>
             </div>
         </form>

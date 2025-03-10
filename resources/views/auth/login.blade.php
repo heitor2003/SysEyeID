@@ -7,42 +7,57 @@
         <x-validation-errors class="mb-4" />
 
         @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+            <div class="mb-4 font-medium text-sm text-green-700">
                 {{ $value }}
             </div>
         @endsession
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
 
+            <!-- Email Input -->
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-label for="email" value="{{ __('Email') }}" class="block text-sm font-medium text-black" />
+                <x-input id="email" class="block mt-1 w-full px-4 py-2 border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-700 focus:border-blue-700 transition duration-200" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Senha') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <!-- Password Input -->
+            <div>
+                <x-label for="password" value="{{ __('Senha') }}" class="block text-sm font-medium text-gray-800" />
+                <x-input id="password" class="block mt-1 w-full px-4 py-2 border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-700 focus:border-blue-700 transition duration-200" type="password" name="password" required autocomplete="current-password" />
             </div>
 
-            <div class="block mt-4">
+            <!-- Remember Me Checkbox -->
+            <div class="flex items-center justify-between">
                 <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Manter conectado') }}</span>
+                    <x-checkbox id="remember_me" name="remember" class="rounded border-gray-500 text-blue-700 shadow-sm focus:ring-blue-700" />
+                    <span class="ms-2 text-sm text-gray-800">{{ __('Manter conectado') }}</span>
                 </label>
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
+                <!-- Forgot Password Link -->
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    <a class="text-sm text-blue-700 hover:text-blue-800 underline" href="{{ route('password.request') }}">
                         {{ __('Esqueceu sua senha?') }}
                     </a>
                 @endif
+            </div>
 
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
+            <!-- Login Button -->
+            <div>
+                <x-button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-700">
+                    {{ __('Entrar') }}
                 </x-button>
             </div>
         </form>
+
+        <!-- Register Link -->
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-800">
+                {{ __('Não tem uma conta?') }}
+                <a href="{{ route('register') }}" class="text-blue-700 hover:text-blue-800 underline">
+                    {{ __('Cadastre-se') }}
+                </a>
+            </p>
+        </div>
     </x-authentication-card>
 </x-guest-layout>

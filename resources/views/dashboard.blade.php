@@ -7,9 +7,5 @@
         </div>
     </div>
 
-    <style>
-        .light-background { background-color: #c7d1d4; }
-        .water-blue-background { background-color: #79b6c8; }
-        .light-text { color: #061722; }
-    </style>
+    
 </x-app-layout>
