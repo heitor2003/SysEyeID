@@ -16,7 +16,7 @@
 
         <!-- Styles -->
         @livewireStyles
-        <link rel="stylesheet" href="{{ mix('resources\css\app.css') }}">
+        
     </head>
     <body>
         <x-banner />

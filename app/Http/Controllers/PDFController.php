@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
-use Log;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PDFController extends Controller
 {
@@ -20,7 +22,7 @@ class PDFController extends Controller
 
         // Dados do formulário
         $nomePaciente = $request->input('nome_paciente');
-        $dataExame = \Carbon\Carbon::parse($request->input('data_exame'))->format('d/m/Y');
+        $dataExame = Carbon::parse($request->input('data_exame'))->format('d-m-Y');
         $resultadoJson = $request->input('resultado_api');
 
         // Log para depurar o conteúdo do resultado da API
@@ -56,29 +58,34 @@ class PDFController extends Controller
     }
 
     public function salvarPdf(Request $request)
-{
-    // Verifica se o arquivo foi enviado
-    if ($request->hasFile('pdf')) {
-        $pdfFile = $request->file('pdf');
-        
-        // Nome único para o arquivo
-        $nomePdf = 'resultado_exame_' . time() . '.pdf';
-        
-        // Salva o arquivo na pasta public/pdfs
-        $path = $pdfFile->storeAs('pdfs', $nomePdf, 'public');
+    {
+        // Verifica se o arquivo foi enviado
+        if ($request->hasFile('pdf')) {
+            $pdfFile = $request->file('pdf');
 
-        // Retorna a URL pública do arquivo
+            // Obter o nome do paciente e a data do exame da requisição
+            $nomePaciente = $request->input('nome_paciente');
+            $dataExame = Carbon::parse($request->input('data_exame'))->format('d-m-Y');
+
+            // Gerar o nome do arquivo no formato "Resultado+Nome+Data"
+            $nomePdf = 'Resultado_' . str_replace(' ', '_', $nomePaciente) . '_' . $dataExame . '.pdf';
+
+            // Salvar o arquivo na pasta public/pdfs com o nome personalizado
+            $path = $pdfFile->storeAs('pdfs', $nomePdf, 'public');
+
+            // Retornar a URL pública do arquivo
+            return response()->json([
+                'success' => true,
+                'pdf_url' => asset('storage/' . $path),
+            ]);
+        }
+
         return response()->json([
-            'success' => true,
-            'pdf_url' => asset('storage/' . $path),
+            'success' => false,
+            'message' => 'Erro ao receber o arquivo PDF.',
         ]);
     }
 
-    return response()->json([
-        'success' => false,
-        'message' => 'Erro ao receber o arquivo PDF.',
-    ]);
-    }
     public function visualizarPDF($filename)
     {
         // Localizar o arquivo no storage
@@ -94,5 +101,4 @@ class PDFController extends Controller
             'Content-Type' => 'application/pdf',
         ]);
     }
-
 }

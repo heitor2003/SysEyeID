@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
+        <div class="max-w-xl text-sm text-gray-600 ">
             {{ __('Se necessário, você pode sair de todas as suas outras sessões do navegador em todos os seus dispositivos. Algumas das suas sessões recentes estão listadas abaixo; no entanto, esta lista pode não ser exaustiva. Se você acha que sua conta foi comprometida, você também deve atualizar sua senha.') }}
         </div>
 
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="ms-3">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                            <div class="text-sm text-gray-600">
                                 {{ $session->agent->platform() ? $session->agent->platform() : __('Unknown') }} - {{ $session->agent->browser() ? $session->agent->browser() : __('Unknown') }}
                             </div>
 

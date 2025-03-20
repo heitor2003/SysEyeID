@@ -19,7 +19,7 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'light-background': '#79b6c8',
+                
                 'water-blue-background': '#c7d1d4',
                 'light-text': '#061722'
             }

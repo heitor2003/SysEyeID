@@ -1,4 +1,6 @@
-<head><meta name="csrf-token" content="{{ csrf_token() }}"></head>
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 <x-app-layout>
     <div class="p-6 lg:p-8 bg-light-yellow dark:bg-dark-blue dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
         <h1 class="text-2xl font-medium text-dark-blue dark:text-light-yellow text-center">Resultado do Exame</h1>
@@ -7,7 +9,7 @@
         </p>
     </div>
 
-    <div class="water-blue-background bg-opacity-25 p-6 lg:p-8">
+    <div class="bg-opacity-25 p-6 lg:p-8">
         <!-- Informações do Paciente -->
         <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow text-center">Informações do Paciente</h2>
         <div class="mt-4 text-center">
@@ -21,15 +23,15 @@
         
         <!-- Imagem do exame -->
         <div class="mt-6 text-center">
-            <h2 class="text-lg font-medium light-text">Imagem do Exame</h2>
+            <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow">Imagem do Exame</h2>
             <div class="mt-4">
-                <img src="{{ $url_imagem }}" alt="Imagem do Olho" class="w-1/2 max-w-md mx-auto border rounded-lg">
+                <img src="{{ $url_imagem }}" alt="Imagem do Olho" class="w-1/2 max-w-md mx-auto border rounded-lg shadow-md">
             </div>
         </div>
 
         <!-- Resultados -->
         <h2 class="text-lg font-medium text-dark-blue dark:text-light-yellow mt-6 text-center">Resultado do Exame</h2>
-        <div class="mt-4 light-background p-6 rounded-lg border border-gray-300 dark:border-gray-700 text-center">
+        <div class="mt-6 bg-white p-3 rounded-lg border border-gray-300 dark:border-gray-700 text-center shadow-sm">
             <p class="text-dark-blue dark:text-light-yellow">
                 @if ($resultado[0][0] > $resultado[0][1])
                     <strong>Possibilidade de estar saudável:</strong> {{ number_format($resultado[0][0] * 100, 2) }}%<br>
@@ -43,12 +45,24 @@
 
         <!-- Botão para Gerar PDF -->
         <div class="mt-6 flex justify-center">
-            <button id="gerar-pdf" class="px-6 py-2 bg-green-700 text-white font-semibold rounded-md hover:bg-green-600 focus:ring-4 focus:ring-green-500 focus:outline-none">
+            <button id="gerar-pdf" class="px-6 py-2 bg-green-700 text-white font-semibold rounded-md hover:bg-green-600 focus:ring-4 focus:ring-green-500 focus:outline-none transition duration-300">
                 Baixar Resultado em PDF
             </button>
         </div>
+
+        <!-- Tela de Carregamento -->
+        <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center">
+                <svg class="animate-spin h-10 w-10 text-green-700" viewBox="0 0 24 24" fill="none">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <p class="mt-4 text-dark-blue dark:text-light-yellow text-lg font-semibold">Gerando PDF...</p>
+            </div>
+        </div>
     </div>
 
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <script>
