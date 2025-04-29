@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SYSEYEID - Inteligência Artificial na Oftalmologia</title>
+    <title>SysEyeID - Inteligência Artificial na Oftalmologia</title>
 
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
     <!-- Hero Section -->
     <section class="bg-medical-dark text-medical-light py-20">
         <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold">SYS EYE ID</h1>
+            <h1 class="text-4xl md:text-5xl font-bold">SysEyeID</h1>
             <p class="text-lg md:text-2xl mt-4">Inteligência artificial aplicada à oftalmologia.</p>
             <a href="{{ route('register') }}" class="mt-8 inline-block bg-white text-medical-dark py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">Comece Agora</a>
         </div>
