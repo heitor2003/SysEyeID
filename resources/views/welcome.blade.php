@@ -57,19 +57,19 @@
             <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-3">
                 <!-- Feature 1 -->
                 <div class="bg-white p-8 rounded-lg shadow-md text-center border border-gray-200">
-                    <img src="{{ asset('images/diagnostico.png') }}" alt="Diagnóstico" class="w-20 h-20 mx-auto mb-6">
-                    <h3 class="font-bold text-xl text-medical-dark">Diagnóstico Preciso</h3>
-                    <p class="text-medical-gray mt-4">Utilizamos IA para fornecer diagnósticos rápidos e confiáveis.</p>
+                    <img src="{{ asset('images/diagnostico.png') }}" alt="Diagnóstico" class="h-20 mx-auto mb-6">
+                    <h3 class="font-bold text-xl text-medical-dark">Triagem Descomplicada</h3>
+                    <p class="text-medical-gray mt-4">Utilizamos IA para fornecer tragens rápidas e confiáveis.</p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="bg-white p-8 rounded-lg shadow-md text-center border border-gray-200">
-                    <img src="{{ asset('images/interface.png') }}" alt="Interface" class="w-20 h-20 mx-auto mb-6">
+                    <img src="{{ asset('images/interface.png') }}" alt="Interface" class="h-20 mx-auto mb-6">
                     <h3 class="font-bold text-xl text-medical-dark">Interface Intuitiva</h3>
                     <p class="text-medical-gray mt-4">Design pensado para facilitar o uso por médicos e pacientes.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="bg-white p-8 rounded-lg shadow-md text-center border border-gray-200">
-                    <img src="{{ asset('images/seguranca.png') }}" alt="Segurança" class="w-20 h-20 mx-auto mb-6">
+                    <img src="{{ asset('images/seguranca.png') }}" alt="Segurança" class="h-20 mx-auto mb-6">
                     <h3 class="font-bold text-xl text-medical-dark">Segurança de Dados</h3>
                     <p class="text-medical-gray mt-4">Protegemos suas informações com os mais altos padrões de segurança.</p>
                 </div>
@@ -81,7 +81,7 @@
     <section class="bg-medical-dark text-medical-light py-20">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold">Pronto para revolucionar seus diagnósticos?</h2>
-            <p class="text-lg mt-4">Junte-se a milhares de profissionais que já confiam na SYS EYE ID.</p>
+            <p class="text-lg mt-4">Junte-se a profissionais que já confiam na SYS EYE ID.</p>
             <a href="{{ route('register') }}" class="mt-8 inline-block bg-white text-medical-dark py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">Cadastre-se Agora</a>
         </div>
     </section>
