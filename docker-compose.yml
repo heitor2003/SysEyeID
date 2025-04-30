@@ -20,7 +20,7 @@ services:
     image: laravel
     container_name: syseyeid-laravel
     ports:
-        - "8000:8000"
+        - "9000:9000"
     volumes:
         - .:/var/www/html
     networks:
@@ -32,11 +32,12 @@ services:
     image: postgres:15
     container_name: syseyeid-postgres
     environment:
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_DATABASE=syseyeidDB
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=postgres
+      - POSTGRES_CONENCTION=pgsql
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=syseyeidDB
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
     volumes:
@@ -58,11 +59,14 @@ services:
         - syseyeid-network
 
   node:
-    image: node
-    build: Dockerfile
+    image: node:20
     container_name: syseyeid-node
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npm run dev"
     networks:
-        - syseyeid-network
+      - syseyeid-network
 
 volumes:
   postgres_data:

@@ -1,4 +1,4 @@
-FROM node:20 as vitebuilder
+FROM node:20 AS vitebuilder
 
 WORKDIR /app
 
@@ -29,8 +29,10 @@ WORKDIR /var/www/html
 COPY . .
 
 COPY --from=vitebuilder /app/public/build ./public/build
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN chown -R www-data:www-data /var/www/html
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 9000
-CMD ["php-fpm"]
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
