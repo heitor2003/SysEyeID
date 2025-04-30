@@ -1,0 +1,73 @@
+services:
+
+  nginx:
+    image: nginx:latest
+    container_name: syseyeid-nginx
+    ports:
+      - "8989:8989"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/html
+    networks:
+      - syseyeid-network
+    depends_on:
+      - laravel
+
+  laravel:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: laravel
+    container_name: syseyeid-laravel
+    ports:
+        - "8000:8000"
+    volumes:
+        - .:/var/www/html
+    networks:
+        - syseyeid-network
+    depends_on:
+        - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: syseyeid-postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=syseyeidDB
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: 
+      - syseyeid-network
+  
+  flask:
+    build:
+        context: ./api
+        dockerfile: Dockerfile
+    image: flask
+    container_name: syseyeid-flask
+    ports:
+        - "5000:5000"
+    volumes:
+        - ./flask:/api
+    networks:
+        - syseyeid-network
+
+  node:
+    image: node
+    build: Dockerfile
+    container_name: syseyeid-node
+    networks:
+        - syseyeid-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  syseyeid-network:
+    driver: bridge
