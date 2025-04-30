@@ -15,48 +15,45 @@ services:
 
   laravel:
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     image: laravel
     container_name: syseyeid-laravel
     ports:
-        - "9000:9000"
+      - "9000:9000"
     volumes:
-        - .:/var/www/html
+      - .:/var/www/html
     networks:
-        - syseyeid-network
+      - syseyeid-network
     depends_on:
-        - postgres
+      - postgres
 
   postgres:
     image: postgres:15
     container_name: syseyeid-postgres
     environment:
-      - POSTGRES_CONENCTION=pgsql
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=syseyeidDB
-      - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_DB: syseyeidDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks: 
       - syseyeid-network
-  
+
   flask:
     build:
-        context: ./api
-        dockerfile: Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     image: flask
     container_name: syseyeid-flask
     ports:
-        - "5000:5000"
+      - "5000:5000"
     volumes:
-        - ./flask:/api
+      - ./flask:/api
     networks:
-        - syseyeid-network
+      - syseyeid-network
 
   node:
     image: node:20

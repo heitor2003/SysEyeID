@@ -1,13 +1,14 @@
+# Etapa de build do Vite (frontend)
 FROM node:20 AS vitebuilder
 
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm install
 
 COPY . .
 RUN npm run build
 
+# Etapa principal com PHP e Laravel
 FROM php:8.2-fpm
 
 RUN apt update && \
@@ -28,11 +29,15 @@ WORKDIR /var/www/html
 
 COPY . .
 
+# Copia arquivos gerados do Vite
 COPY --from=vitebuilder /app/public/build ./public/build
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN chown -R www-data:www-data /var/www/html
+# Entrypoint para rodar as migrations
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+RUN chown -R www-data:www-data /var/www/html
+
 EXPOSE 9000
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["php-fpm"]
