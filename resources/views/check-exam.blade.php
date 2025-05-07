@@ -51,7 +51,7 @@
             },
             mounted() {
                 axios
-                    .get('/api/pdfs')
+                    .get('/pdfs')
                     .then((response) => {
                         this.pdfs = response.data;
                     })

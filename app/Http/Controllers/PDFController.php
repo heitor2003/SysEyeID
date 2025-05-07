@@ -89,7 +89,7 @@ class PDFController extends Controller
     public function visualizarPDF($filename)
     {
         // Localizar o arquivo no storage
-        $path = storage_path("app/public/pdfs/{$filename}");
+        $path = storage_path("storage/app/public/pdfs/{$filename}");
 
         // Verificar se o arquivo existe
         if (!file_exists($path)) {

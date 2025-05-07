@@ -10,7 +10,7 @@
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        .bg-medical-dark { background-color: #0A1E3C; } /* Azul escuro */
+        .bg-medical-dark { background-color: #110436; } /* Azul escuro */
         .bg-medical-light { background-color: #F8FAFC; } /* Branco suave */
         .text-medical-dark { color: #0A1E3C; }
         .text-medical-light { color: #F8FAFC; }

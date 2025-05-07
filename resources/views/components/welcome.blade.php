@@ -1,4 +1,4 @@
-<div class="p-6 lg:p-8 bg-gradient-to-r from-blue-900 to-blue-700 border-b border-gray-200">
+<div class="p-6 lg:p-8 border-b border-gray-200" style="background-color: #110436;">
     <h1 class="mt-8 text-3xl font-bold text-white">
         Bem-vindo ao SYSEYE ID!
     </h1>

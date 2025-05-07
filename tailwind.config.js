@@ -20,7 +20,7 @@ export default {
             },
             colors: {
                 
-                'water-blue-background': '#c7d1d4',
+                'custom-dark': '#110436',
                 'light-text': '#061722'
             }
         },
